@@ -3,32 +3,46 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#2563eb">
-<meta name="description" content="POWER LEARN - Platform belajar digital untuk masa depan.">
 <title>POWER LEARN BY INI NAKY</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f5f8ff;color:#172554}
-header{background:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px #dbeafe}
-.logo{font-size:21px;font-weight:bold;color:#2563eb}
-nav a{margin-left:15px;color:#334155;text-decoration:none;font-size:14px}
-.hero{text-align:center;padding:75px 20px;background:linear-gradient(135deg,#dbeafe,#eff6ff)}
-.hero h1{font-size:38px;color:#1d4ed8;margin-bottom:15px}
-.hero p{max-width:550px;margin:auto;line-height:1.7;color:#475569}
-.btn{display:inline-block;background:#2563eb;color:white;padding:13px 24px;border-radius:9px;text-decoration:none;margin-top:25px}
-section{padding:45px 6%}
-h2{text-align:center;color:#1d4ed8;margin-bottom:25px}
-.courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
-.card{background:white;padding:24px;border-radius:14px;box-shadow:0 4px 16px #dbeafe}
-.card h3{margin:12px 0;color:#1d4ed8}
-.card p{font-size:14px;color:#64748b;line-height:1.6}
-.icon{font-size:32px}
-footer{text-align:center;background:#172554;color:white;padding:25px;font-size:13px}
+header{background:white;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px #dbeafe;position:sticky;top:0;z-index:5}
+.logo{font-weight:800;font-size:20px;color:#2563eb}
+nav{display:flex;gap:14px;align-items:center}
+nav a{color:#334155;text-decoration:none;font-size:13px}
+button{cursor:pointer;border:0;border-radius:9px;padding:11px 15px;background:#2563eb;color:white;font-weight:bold}
+.lang{background:#eaf1ff;color:#1d4ed8}
+.hero{text-align:center;padding:65px 20px;background:linear-gradient(135deg,#dbeafe,#eff6ff)}
+.hero h1{font-size:36px;color:#1d4ed8;margin-bottom:14px}
+.hero p{max-width:570px;margin:auto;line-height:1.7;color:#475569}
+.hero button{margin-top:22px;padding:14px 24px}
+section{padding:42px 6%}
+.heading{text-align:center;margin-bottom:24px}
+.heading h2{color:#1d4ed8;margin-bottom:8px}
+.heading p{color:#64748b;font-size:14px}
+.search{display:block;width:100%;max-width:500px;margin:0 auto 25px;padding:14px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px}
+.filters{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-bottom:24px}
+.filters button{background:#e5edff;color:#1d4ed8}
+.filters button.active{background:#2563eb;color:white}
+.courses{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:17px}
+.card{background:white;border:1px solid #e2e8f0;padding:22px;border-radius:15px;box-shadow:0 4px 14px #dbeafe}
+.icon{font-size:34px;margin-bottom:13px}
+.card h3{color:#1d4ed8;margin-bottom:9px}
+.card p{color:#64748b;font-size:14px;line-height:1.6;min-height:45px}
+.tag{display:inline-block;background:#eff6ff;color:#2563eb;padding:6px 9px;border-radius:20px;font-size:11px;margin:13px 0}
+.card button{display:block;width:100%}
+.empty{text-align:center;padding:25px;color:#64748b;grid-column:1/-1}
+.dashboard{background:#eaf2ff;border-radius:16px;text-align:center;padding:30px}
+.dashboard h2{color:#1d4ed8;margin-bottom:10px}
+.dashboard p{color:#475569;line-height:1.7}
+footer{background:#172554;color:white;text-align:center;padding:28px;line-height:1.8;font-size:13px}
 @media(max-width:600px){
-header{flex-direction:column;gap:13px}
-nav a{margin:0 7px}
-.hero h1{font-size:30px}
+header{flex-wrap:wrap;gap:12px}
+nav{width:100%;justify-content:space-between}
+.hero h1{font-size:29px}
 }
 </style>
 </head>
@@ -37,59 +51,116 @@ nav a{margin:0 7px}
 <header>
 <div class="logo">POWER LEARN</div>
 <nav>
-<a href="#home">Beranda</a>
-<a href="#courses">Kursus</a>
-<a href="#about">Tentang</a>
+<a href="#home" data-id="home">Beranda</a>
+<a href="#courses" data-id="courses">Kursus</a>
+<a href="#dashboard" data-id="dashboard">Dashboard</a>
+<button class="lang" onclick="changeLanguage()">EN</button>
 </nav>
 </header>
 
 <div class="hero" id="home">
-<h1>Learn Today, Build Tomorrow.</h1>
-<p>Selamat datang di POWER LEARN BY INI NAKY.
-Tingkatkan kemampuan, pelajari keterampilan baru,
-dan bangun masa depan yang lebih baik.</p>
-<a href="#courses" class="btn">Mulai Belajar</a>
+<h1 data-id="hero">Belajar Hari Ini, Bangun Masa Depan.</h1>
+<p data-id="intro">Tingkatkan kemampuan, pelajari keterampilan baru,
+dan buka peluang masa depan bersama POWER LEARN BY INI NAKY.</p>
+<button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})" data-id="start">Mulai Belajar</button>
 </div>
 
 <section id="courses">
-<h2>Program Pembelajaran</h2>
-<div class="courses">
-<div class="card">
-<div class="icon">💻</div>
-<h3>Digital Skills</h3>
-<p>Belajar teknologi, AI, website dan keterampilan digital.</p>
+<div class="heading">
+<h2 data-id="courseTitle">Jelajahi Program Belajar</h2>
+<p data-id="courseDesc">Pilih bidang yang ingin kamu pelajari.</p>
 </div>
-<div class="card">
-<div class="icon">🏢</div>
-<h3>Business</h3>
-<p>Pelajari bisnis, pemasaran dan pengembangan usaha.</p>
+
+<input class="search" id="search" type="search" placeholder="Cari materi pembelajaran..." oninput="renderCourses()">
+
+<div class="filters" id="filters">
+<button class="active" onclick="setCategory('all',this)">Semua</button>
+<button onclick="setCategory('digital',this)">Digital</button>
+<button onclick="setCategory('business',this)">Bisnis</button>
+<button onclick="setCategory('design',this)">Desain</button>
+<button onclick="setCategory('language',this)">Bahasa</button>
 </div>
-<div class="card">
-<div class="icon">🏠</div>
-<h3>Home Design</h3>
-<p>Belajar desain rumah, arsitektur dan kreativitas.</p>
-</div>
-<div class="card">
-<div class="icon">🌐</div>
-<h3>Languages</h3>
-<p>Belajar Bahasa Inggris dan komunikasi internasional.</p>
-</div>
-</div>
+
+<div class="courses" id="courseList"></div>
 </section>
 
-<section id="about">
-<h2>Tentang POWER LEARN</h2>
-<p style="text-align:center;line-height:1.8;color:#64748b">
-POWER LEARN merupakan platform pembelajaran digital
-untuk membantu masyarakat mengembangkan pengetahuan
-dan keterampilan melalui teknologi.
-</p>
+<section id="dashboard">
+<div class="dashboard">
+<h2 data-id="dashTitle">Dashboard Pelajar</h2>
+<p data-id="dashDesc">Tempat untuk mengembangkan kemampuan dan memantau perjalanan belajarmu.</p>
+<button onclick="alert('Fitur akun pelajar sedang dalam tahap pengembangan.')" data-id="account">Area Anggota Segera Hadir</button>
+</div>
 </section>
 
 <footer>
-POWER LEARN BY INI NAKY<br>
-LEARN TODAY, BUILD TOMORROW.
+<strong>POWER LEARN BY INI NAKY</strong><br>
+LEARN TODAY · BUILD TOMORROW<br>
+© 2026 POWER LEARN
 </footer>
 
+<script>
+let lang='id';
+let category='all';
+
+const courses=[
+{icon:'💻',cat:'digital',id:'c1',idName:'Dasar Teknologi Digital',enName:'Digital Technology Basics',idDesc:'Pelajari dasar teknologi dan penggunaan internet.',enDesc:'Learn technology and internet basics.'},
+{icon:'🤖',cat:'digital',id:'c2',idName:'Pengenalan Kecerdasan Buatan',enName:'Introduction to AI',idDesc:'Kenali teknologi AI dan pemanfaatannya.',enDesc:'Discover AI technology and its uses.'},
+{icon:'📈',cat:'business',id:'c3',idName:'Dasar Kewirausahaan',enName:'Business Fundamentals',idDesc:'Pelajari dasar membangun sebuah usaha.',enDesc:'Learn the basics of starting a business.'},
+{icon:'📢',cat:'business',id:'c4',idName:'Digital Marketing',enName:'Digital Marketing',idDesc:'Kenali strategi pemasaran melalui internet.',enDesc:'Discover online marketing strategies.'},
+{icon:'🏠',cat:'design',id:'c5',idName:'Desain Rumah Dasar',enName:'Home Design Basics',idDesc:'Belajar konsep awal desain rumah.',enDesc:'Learn the fundamentals of home design.'},
+{icon:'🎨',cat:'design',id:'c6',idName:'Desain Grafis',enName:'Graphic Design',idDesc:'Pelajari prinsip desain visual.',enDesc:'Learn visual design principles.'},
+{icon:'🌎',cat:'language',id:'c7',idName:'Bahasa Inggris Dasar',enName:'Basic English',idDesc:'Mulai belajar bahasa Inggris dari dasar.',enDesc:'Start learning English from the basics.'}
+];
+
+const words={
+id:{home:'Beranda',courses:'Kursus',dashboard:'Dashboard',hero:'Belajar Hari Ini, Bangun Masa Depan.',intro:'Tingkatkan kemampuan, pelajari keterampilan baru, dan buka peluang masa depan bersama POWER LEARN BY INI NAKY.',start:'Mulai Belajar',courseTitle:'Jelajahi Program Belajar',courseDesc:'Pilih bidang yang ingin kamu pelajari.',dashTitle:'Dashboard Pelajar',dashDesc:'Tempat untuk mengembangkan kemampuan dan memantau perjalanan belajarmu.',account:'Area Anggota Segera Hadir',search:'Cari materi pembelajaran...',all:'Semua',digital:'Digital',business:'Bisnis',design:'Desain',language:'Bahasa',learn:'Lihat Materi'},
+en:{home:'Home',courses:'Courses',dashboard:'Dashboard',hero:'Learn Today, Build Tomorrow.',intro:'Improve your skills, learn something new, and discover opportunities with POWER LEARN BY INI NAKY.',start:'Start Learning',courseTitle:'Explore Learning Programs',courseDesc:'Choose a subject you want to learn.',dashTitle:'Student Dashboard',dashDesc:'A place to develop your skills and follow your learning journey.',account:'Member Area Coming Soon',search:'Search learning materials...',all:'All',digital:'Digital',business:'Business',design:'Design',language:'Language',learn:'View Course'}
+};
+
+function changeLanguage(){
+lang=lang==='id'?'en':'id';
+document.documentElement.lang=lang;
+document.querySelectorAll('[data-id]').forEach(el=>{
+let key=el.dataset.id;
+el.textContent=words[lang][key];
+});
+document.querySelector('.lang').textContent=lang==='id'?'EN':'ID';
+document.getElementById('search').placeholder=words[lang].search;
+document.querySelectorAll('#filters button').forEach(btn=>{
+let key=btn.dataset.cat;
+if(key)btn.textContent=words[lang][key];
+});
+renderCourses();
+}
+
+function setCategory(cat,btn){
+category=cat;
+document.querySelectorAll('#filters button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+renderCourses();
+}
+
+function renderCourses(){
+let query=document.getElementById('search').value.toLowerCase();
+let filtered=courses.filter(c=>
+(category==='all'||c.cat===category)&&
+(c.idName.toLowerCase().includes(query)||c.enName.toLowerCase().includes(query))
+);
+document.getElementById('courseList').innerHTML=filtered.length?
+filtered.map(c=>`
+<div class="card">
+<div class="icon">${c.icon}</div>
+<h3>${lang==='id'?c.idName:c.enName}</h3>
+<p>${lang==='id'?c.idDesc:c.enDesc}</p>
+<span class="tag">${words[lang][c.cat]}</span>
+<button onclick="alert('Materi ${lang==='id'?c.idName:c.enName} akan segera tersedia.')">${words[lang].learn}</button>
+</div>`).join(''):
+'<div class="empty">Tidak ada materi ditemukan.</div>';
+}
+document.querySelectorAll('#filters button').forEach((btn,i)=>{
+btn.dataset.cat=['all','digital','business','design','language'][i];
+});
+renderCourses();
+</script>
 </body>
 </html>
